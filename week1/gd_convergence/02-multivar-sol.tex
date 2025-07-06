@@ -1,0 +1,40 @@
+\begin{answer}
+    
+    Since \(\Theta\) is now a multidimensional vector, 
+    we can for now look at the \(i\)-th component of our parameters (as the solutions extend to the other elements as well).
+    
+    Analogous to (a), we can define \(\Theta_i^{[t]}\) in terms of \(\Theta_i^{[0]}\): 
+    \[
+    \Theta_i^{[t]} = (1 - \alpha \beta_i)^t \cdot \Theta_i^{[0]}.
+    \]
+    
+
+    \textbf{Value of \(\Theta^\dagger\):}
+    \[
+    \lim_{t \to \infty} |\Theta_i^{[t]} - \Theta_i^\dagger| = 0
+    \]
+    \[
+    \lim_{t \to \infty} |(1 - \alpha \beta_i)^t \cdot \Theta_i^{[0]} - \Theta_i^\dagger| = 0
+    \]
+    
+    This has the same shape as the limit we solved for the single dimension case. Hence, we can say that for all \(i \in \{1, \ldots, d\}\) the following holds true:
+    \[
+    \lim_{t \to \infty} \Theta^{[t]} = 0
+    \]
+    \[
+    \Rightarrow \Theta^{\dagger} = 0.
+    \]
+    
+    \textbf{Range of \(\alpha\):}
+    
+    Also like in a), for GD to converge, the following needs to be true:
+    \[
+    |1 - \alpha \beta_i| < 1.
+    \]
+    
+    This leads to:
+    \[
+    0 < \alpha < \frac{2}{\beta_i} \quad \text{for all } i \in \{1, \ldots, d\}.
+    \]
+    
+\end{answer}

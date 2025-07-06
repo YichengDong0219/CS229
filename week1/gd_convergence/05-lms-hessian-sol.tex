@@ -1,0 +1,51 @@
+\begin{answer}
+
+Same as in d), we can define $J(\theta^{(t)})$ with the Taylor Theorem: \\
+
+Let $x = \theta^{(t-1)}$
+
+Let $y = \theta^{(t)}$
+
+\setcounter{equation}{0}
+
+\begin{equation}
+    \begin{aligned}
+        J(\theta^{(t)}) &= J(\theta^{[t-1]}) - \alpha ||\nabla J(\theta^{[t-1]})||_2^2 \\
+        &+ \frac{\alpha^2}{2} \nabla J(\theta^{[t-1]})^T \nabla^2 J(x+c(y-x)) \nabla J(\theta^{[t-1]})
+        \text{}
+    \end{aligned}
+\end{equation}
+
+\textbf{Gradient \& Hessian of $J(\theta)$}
+
+For $k=\{d_1, \dots, d_m\}$, we can isolate the k-th parameter of $\theta$, $\theta_k$:
+% NOTE: The equation preceding this result was messy and largely crossed out. The clearest, final part of the expression is transcribed below.
+\begin{align*}
+    \nabla_{\theta_k} J(\theta) &= \sum_{i=0}^N X_{ik} (X_i \theta - y_i) \\
+    &= X_k^T (X\theta - y) = X_k^T X \theta - X_k^T y
+\end{align*}
+
+
+Expanding this to the multidimensional case:
+\[
+  \nabla J(\theta) = X^T X \theta - X^T y
+\]
+The Hessian resulting out of this is:
+\[
+    \nabla^2 J(\theta) = X^T X
+\]
+
+Inserting this into (1) gives us:
+    \[
+    J(\theta^{(t)}) = J(\theta^{(t-1)}) + \nabla J(\theta^{(t-1)})^T X^T X\nabla J(\theta^{[t-1]})
+\]
+
+As left-multiplying a matrix by its own transpose leads to a symmetric matrix $Z = X^T X$, we can take over the same inequality as in (4) in d).
+
+\begin{align}
+    \quad J(\theta^{(t)}) \leq J(\theta^{(t-1)}) - \alpha \cdot ||\nabla J(\theta^{(t-1)})||_2^2 \cdot \left(1 - \frac{\alpha \beta_{max}}{2}\right)
+\end{align}
+
+Here again, d)'s statement (5) follows, which proves that for all $\alpha \in (0, 2/L_{max})$ with GD converges as $t \to \infty$.
+
+\end{answer}

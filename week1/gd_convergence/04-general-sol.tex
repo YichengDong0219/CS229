@@ -1,0 +1,74 @@
+\begin{answer}
+
+With the Taylor Theorem, we can define J($\theta^{[t]}$) like the following:
+
+Let's assume $x = \theta^{[t-1]}$ and $y = \theta^{[t]}$ (the point we want to define out going from the information at point x)
+
+\begin{equation}
+    \begin{aligned}
+        J(y) = J(x) + \nabla J(x)^T(y-x) + \frac{1}{2}(y-x)^T \nabla^2 J(x+c(y-x))(y-x) \\
+        \text{(for some $0 \le c \le 1$.)}
+    \end{aligned}
+\end{equation}
+
+We can substitute for $y-x = \theta^{[t]} - \theta^{[t-1]}$ based on the Gradient Descent Update Rule:
+\begin{equation}
+\theta^{[t]} - \theta^{[t-1]} = -\alpha \nabla J(\theta^{[t-1]})
+\end{equation}
+Substituting:
+\begin{align}
+J(\theta^{[t]}) &= J(\theta^{[t-1]}) + \nabla J(\theta^{[t-1]})^T (-\alpha \nabla J(\theta^{[t-1]})) \nonumber \\
+& \quad + \frac{1}{2} (-\alpha \nabla J(\theta^{[t-1]}))^T \nabla^2 J(x+c(y-x)) (-\alpha \nabla J(\theta^{[t-1]})) \nonumber \\
+&= J(\theta^{[t-1]}) - \alpha ||\nabla J(\theta^{[t-1]})||_2^2 \nonumber \\
+& \quad + \frac{\alpha^2}{2} \nabla J(\theta^{[t-1]})^T \nabla^2 J(x+c(y-x)) \nabla J(\theta^{[t-1]})
+\end{align}
+
+% --- Page 2 ---
+\smallskip
+To make sure that the objective function is strictly decreasing, we need to prove that the positive term (Hessian term) is smaller than the negative term (scaled L2 norm of the gradient).
+
+For this we can use the Spectral Theorem together with the fact that we know that the largest eigenvalue of H = $\nabla^2 J(x)$:
+\smallskip \\
+
+Let $H = \nabla^2 J(x+c(y-x)) = U \Lambda U^\top$.
+
+Let $Z = \nabla J(\theta^{[t-1]})$.
+
+\[
+Z^\top U \Lambda U^\top Z = \nabla J(\theta^{[t-1]})^\top \nabla^2 J(x+c(y-x)) \nabla J(\theta^{[t-1]})
+\]
+
+Let $W=U^T Z$.
+\[
+\Rightarrow W^T \Lambda W = \sum_{i=1}^{d} \lambda_i W_i^2
+\]
+With $\lambda_i \le \beta_{max}$, it follows that:
+\[
+    \sum_{i=1}^{d} \lambda_i W_i^2 \le \beta_{max} \sum_{i=1}^{d} W_i^2 = \beta_{max} ||W||^2
+\]
+As U is an orthogonal matrix and does not change length during transformation, we can also take the length of $Z$ instead of $W$:
+\[
+    Z^\top U \Lambda U^\top Z \le \beta_{max} ||Z||^2
+\]
+
+Inserting this into (3), we get:
+\begin{align} \label{eq:4}
+J(\theta^{[t]}) &\le J(\theta^{[t-1]}) - \alpha ||\nabla J(\theta^{[t-1]})||_2^2 + \frac{\alpha^2}{2} \beta_{max} ||\nabla J(\theta^{[t-1]})||_2^2 \\
+&\le J(\theta^{[t-1]}) - \alpha ||\nabla J(\theta^{[t-1]})||_2^2 \left(1 - \frac{\alpha \beta_{max}}{2}\right) \nonumber
+\end{align}
+
+For $J(\theta^{[t-1]}) > J(\theta^{[t]})$ to hold true the term in the parenthesis needs to be positive.
+
+\begin{equation}
+1 \ge \frac{\alpha \beta_{max}}{2}
+\end{equation}
+With $0 < \alpha < 1/\beta_{max}$, $\alpha$'s maximizing value is $1/\beta_{max}$.
+\[
+1 \ge \frac{\frac{1}{\beta_{max}} \beta_{max}}{2}
+\]
+\[
+1 \ge 0.5
+\]
+$\rightarrow$ With $0 < \alpha < \frac{1}{\beta_{max}}$, we can guarantee that our objective function is decreasing with every step.
+
+\end{answer}

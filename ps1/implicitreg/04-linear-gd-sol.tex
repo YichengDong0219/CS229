@@ -1,0 +1,50 @@
+
+\begin{answer}
+
+Loss Function: $J(\beta) = \frac{1}{n} ||X\beta - Y||_2$ \\
+Gradient of Loss Function: $\frac{1}{n} X^T(X\beta - Y)$ \\
+Minimum Norm Solution: $\hat{\beta} = X^T(XX^T)^{-1}Y$ \\
+Zero Loss solution (general): $\hat{\beta} = \rho + \zeta$ \quad { (For an invertible $XX^T$) } \\
+
+\subsubsection*{1.}
+\begin{math}
+\text{Assume } \beta^{(t)} = X^T v^{(t)} \text{ for } v^{(t)} \in \mathbb{R}^n
+\\ \\
+\textbf{Proof for } t=0,1:
+\\[0.5em]
+\beta^{(0)} = 0 = X^T \vec{0} \\
+\beta^{(1)} = 0 - \eta \nabla J(\beta^{(0)}) = -\frac{\eta}{n} X^T(X\beta^{(0)} - Y) = X^T \overbrace{ \frac{\eta}{n} (X^T\beta^{(0)})  + Y}^{v^{(1)}}
+\\[1em]
+\textbf{Proof for } t=d+1:
+\\
+\beta^{(d+1)} = \beta^{(d)} - \eta \nabla\mathcal{L}(\beta^{(d)})
+\\
+= X^T v^{(d)} - \eta \cdot \frac{1}{n} X^T(X\beta^{(d)} - \vec{y})
+\\
+= X^T \cdot \underbrace{(v^{(d)} - \eta \cdot \frac{1}{n} (X\beta^{(d)} - \vec{y}))}_{v^{(t+1)}}
+\\
+\end{math}
+
+\subsubsection*{2.}
+
+\begin{math}
+\text{1) } J(\hat{\beta}) = 0 \Leftrightarrow \frac{1}{2n} \|X\hat{\hat{\beta}} - y\|_2^2 = 0 \Leftrightarrow X\hat{\beta} = y
+\\
+\text{2) } \beta = X^T v \text{ for some } v \in \mathbb{R}^n
+\\[0.5em]
+\text{Substituting 2) into 1):}
+\\
+X(X^T v) = y \Rightarrow (XX^T)v = y
+\\
+v = (XX^T)^{-1}y
+\\[0.5em]
+\text{Insert into 2):}
+\\
+\beta = X^T(XX^T)^{-1}y = \rho
+\\[0.5em]
+\text{This proves that GD with zero initialization always ends up with the minimum}
+\\
+\text{norm solution, as it is constrained to the rowspace.}
+\\[1em]
+\end{math}
+\end{answer}

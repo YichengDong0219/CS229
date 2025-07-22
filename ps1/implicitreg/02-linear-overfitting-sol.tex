@@ -1,0 +1,32 @@
+\begin{answer}
+\begin{enumerate}
+    \item[(1)] $\rho = X^T(XX^T)^{-1}Y$ \item[(2)] $\beta = \rho + \zeta$ \\
+\end{enumerate}
+
+Proof of $||\rho||_2 \leq ||\beta||_2$ for $\forall \beta : J(\beta) = 0$:
+\begin{enumerate}
+\item[(3)] $||\beta||_2^2 = \sum_i (\beta^{i})^2$
+\end{enumerate}
+
+Let's define $\beta^{(i)}$ based on (2):
+
+\begin{enumerate}
+\item[(2*)] $\beta^{(1)} = \rho^{(1)} + \zeta^{(1)}$
+\end{enumerate}
+$\longrightarrow$ Insert in (3)
+\begin{enumerate}
+\item[(4)] $||\beta^i||^2 = \sum_i^d (\rho^{(i)} + \zeta^{(i)})^2$
+\begin{align*}
+&= \sum_i (\rho^{(i)})^2 + 2\rho^{(i)}\zeta^{(i)} + (\zeta^{(i)})^2 \\
+&= ||\rho||_2^2 + 2\rho^T\zeta + ||\zeta||_2^2
+\end{align*}
+$2\rho^T\zeta = 0$ as $\rho \in \text{Row}(X)$ and $\zeta \in \text{Null}(X)$, which are orthogonal to each other\\
+$\implies ||\beta||_2^2 = ||\rho||_2^2 + ||\zeta||_2^2$
+\end{enumerate}
+\begin{enumerate}
+\item[(4*)] $||\beta||_2^2 = ||\rho||_2^2 + ||\zeta||_2^2 \geq ||\rho||_2^2$
+\end{enumerate}
+
+With $\zeta$ being any vector in $\mathbb{R}^d$, we can say that the L2-norm of $\rho$ is smaller or equal to the L2-norm of $\beta$.
+
+\end{answer}

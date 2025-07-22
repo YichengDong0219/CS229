@@ -1,0 +1,47 @@
+\begin{answer} 
+
+\textbf{Given:}
+\begin{enumerate}
+\item[i.] $XX^T \in \mathbb{R}^{n \times n}$ is an invertible matrix.
+\item[ii.] Cost function: $J(\beta) = \frac{1}{n} ||X\beta - Y||^2_2$
+\item[iii.] We are in the overparameterized regime: $n < d$
+\item[iv.] Linear model of dataset: $y^{(i)} = (\beta)^T x^{(i)}$ or $Y = X\beta$
+\end{enumerate}
+
+To prove this, we can first untangle the iff into the following: \
+
+\subsubsection*{1)}
+If $\beta$ has the form in the problem statement, then the training loss is zero:
+
+\begin{enumerate}
+\item $\beta = X^T(XX^T)^{-1}Y + \zeta$
+\item Loss Function: $X\beta - Y = X(X^T(XX^T)^{-1}Y + \zeta) - Y$ \\
+\end{enumerate}
+
+Setting ii. to zero.
+\begin{align*}
+0 &= X(X^T(XX^T)^{-1}Y + \zeta) - Y \\
+&= XX^T(XX^T)^{-1}Y + X\zeta - Y
+\end{align*}
+As $\zeta$ is orthogonal to the whole rowspace of X, $X\zeta$ is zero \\
+$\implies Y = XX^T(XX^T)^{-1}Y \implies Y=Y$
+
+\subsubsection*{2)}
+Assuming the training loss is zero, what form has $\beta$?
+\begin{align*}
+    0 &= J(\beta) \\
+    0 &= \frac{1}{n} ||X\beta - Y||^2_2 \\
+    0 &= X\beta - Y \\
+    Y &= X\beta 
+\end{align*}
+
+As the matrix $X$ has more columns than rows ($n<d$), the result of a left-multiplication with $X$ has one part that is mapped to the columnspace of X (which is Y) but also another part $\zeta \in \mathbb{R}^d$ that is part of $X$'s nullspace and maps hence to zero:
+
+\begin{align*}
+    Y + X\zeta &= X\beta \quad \text{(Left-multiplying by } X^T(XX^T)^{-1} = X^{-1}) \\
+    X^T(XX^T)^{-1}Y + X^T(XX^T)^{-1}X\zeta &= \beta \\
+    \implies \beta &= X^T(XX^T)^{-1}Y + \zeta
+\end{align*}    
+
+
+\end{answer}

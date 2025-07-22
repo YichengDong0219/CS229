@@ -1,0 +1,34 @@
+
+\begin{answer}
+
+Global Minimum of $J_\lambda(\beta)$: \
+
+1) $\nabla J_\lambda(\beta) = X^T(X\beta - Y) + \lambda\beta$
+
+2)
+\setcounter{equation}{0}
+\begin{equation}
+    \nabla J_\lambda(\beta) = 0 \Leftrightarrow 0 = X^T(X\beta - Y) + \lambda\beta
+\end{equation}
+\begin{equation}
+    0 = X^T X \beta - X^T Y + \lambda\beta
+\end{equation}
+\begin{equation}
+    0 = X^T X \beta - X^T Y + \lambda I \beta
+\end{equation}
+\begin{equation}
+    X^T Y \frac{1}{\beta} = X^T X + \lambda I
+\end{equation}
+\begin{equation}
+    (X^T Y)^{-1} \beta = (X^T X + \lambda I)^{-1} \\
+\end{equation}
+\begin{equation}
+    \beta = (X^T X + \lambda I)^{-1} X^T Y
+\end{equation}
+
+
+Annotation for (3): For this formula to work, we need to multiply our identity value by $\lambda$ to match the dimensions of $X^T X$. \ Thus this gives us the $\hat{\beta}_{\lambda}$ for $\lambda > 0$:
+\begin{equation}
+\hat{\beta}_{\lambda} = (X^T X + \lambda I_{d \times d})^{-1} X^T Y
+\end{equation}
+\end{answer}

@@ -15,9 +15,28 @@ def main(lr, train_path, eval_path, save_path):
     x_train, y_train = util.load_dataset(train_path, add_intercept=True)
 
     # *** START CODE HERE ***
+    x_val, y_val = util.load_dataset(eval_path, add_intercept=True)
     # Fit a Poisson Regression model
-    # Run on the validation set, and use np.savetxt to save outputs to save_path
+    
+    clf = PoissonRegression(step_size=lr)
+    clf.fit(x_train, y_train)
+    predictions = clf.predict(x_val)
+    np.savetxt(save_path, predictions)
+    
+    # Plot the true count and predicted
+    plt.figure()
+    plt.scatter(y_val, predictions, color='blue', label='Predicted vs True')
+    plt.xlabel('True Count')
+    plt.ylabel('Predicted Expected Count')
+    plt.legend()
+    # Set both axes to start at 0 and have the same limits for proportionality
+    min_val = 0
+    max_val = max(np.max(y_val), np.max(predictions))
+    plt.xlim(min_val, max_val)
+    plt.ylim(min_val, max_val)
+    plt.savefig(save_path + ".png")
     # *** END CODE HERE ***
+
 
 
 class PoissonRegression:
@@ -54,6 +73,18 @@ class PoissonRegression:
             y: Training example labels. Shape (n_examples,).
         """
         # *** START CODE HERE ***
+        for i in range(self.max_iter):
+            if self.theta is None:
+                self.theta = np.zeros(x.shape[1])
+            
+            gradient = x.T @ (y - np.exp(x @ self.theta))
+            
+            new_theta = self.theta + self.step_size * gradient
+            
+            if np.sqrt(np.sum((new_theta - self.theta) ** 2)) < self.eps :
+                break
+            
+            self.theta = new_theta
         # *** END CODE HERE ***
 
     def predict(self, x):
@@ -66,6 +97,7 @@ class PoissonRegression:
             Floating-point prediction for each input, shape (n_examples,).
         """
         # *** START CODE HERE ***
+        return np.exp(x @ self.theta)
         # *** END CODE HERE ***
 
 if __name__ == '__main__':

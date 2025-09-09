@@ -1,0 +1,81 @@
+\begin{answer}
+    \textbf{1) Latent Variables}
+
+    The objective function which we want to maximize, as given in the problem statement, is the following:
+
+    $L = \sum_{i=1}^{n} \sum_{j=1}^{k} w_j^{(i)} \log \left[ \frac{|S_j|^{1/2}}{(2\pi)^{d/2}} \exp \left( -\frac{1}{2}(x^{(i)} - \mu_j)^T S_j (x^{(i)} - \mu_j) \right) \frac{\phi_j}{w_j^{(i)}} \right]$
+
+    $+ \sum_{i=1}^{\tilde{n}} \sum_{j=1}^{k} \tilde{w}_j^{(i)} \log \left[ \frac{|S_j|^{1/2}}{(2\pi)^{d/2}} \exp \left( -\frac{1}{2}(\tilde{x}^{(i)} - \mu_j)^T S_j (\tilde{x}^{(i)} - \mu_j) \right) \frac{\phi_j}{\tilde{w}_j^{(i)}} \right]$
+
+    We can already simplify this a bit, as we will focus on $\mu$ and $\phi$, so that we can cut out irrelevant parts.
+    \begin{itemize}
+        \item Relevant for the update rule of $\phi_j$: $\sum_{i=1}^{n} \sum_{j=1}^{k} w_j^{(i)} \log(\phi_j) + \sum_{i=1}^{\tilde{n}} \sum_{j=1}^{k} \tilde{w}_j^{(i)} \log(\phi_j)$
+        \item Relevant for the update rule of $\mu_j$: $\sum_{i=1}^{n} \sum_{j=1}^{k} w_j^{(i)} \left( -\frac{1}{2}(x^{(i)} - \mu_j)^T S_j (x^{(i)} - \mu_j) \right) + \sum_{i=1}^{\tilde{n}} \sum_{j=1}^{k} \tilde{w}_j^{(i)} \left( -\frac{1}{2}(\tilde{x}^{(i)} - \mu_j)^T S_j (\tilde{x}^{(i)} - \mu_j) \right)$
+    \end{itemize}
+
+    \textbf{2a) Update rule for $\mu_j^{(t+1)}$}
+
+    When we are updating a specific $\mu_j^{(t+1)}$, we want to maximize the objective function with respect to it. For that, we need to differentiate with respect to it.
+
+    Let's start first with the relevant terms of the objective function for a specific $\mu_j$:
+
+    $$-\frac{1}{2} \sum_{i=1}^{n} w_j^{(i)} (x^{(i)} - \mu_j)^T S_j (x^{(i)} - \mu_j) - \frac{1}{2} \sum_{i=1}^{\tilde{n}} \tilde{w}_j^{(i)} (\tilde{x}^{(i)} - \mu_j)^T S_j (\tilde{x}^{(i)} - \mu_j)$$
+
+    The equation includes a term, that is analogous to the quadratic form rule for matrices: $(a-b)^T M (a-b)$
+
+    With this, we can derive the general form with respect to $b$ (which is $\mu_j$ in the specific equation):
+
+    This gives us:
+
+    $$\sum_{i=1}^{n} w_j^{(i)} S_j (x^{(i)} - \mu_j) + \sum_{i=1}^{\tilde{n}} \tilde{w}_j^{(i)} S_j (\tilde{x}^{(i)} - \mu_j) = 0$$
+
+    With $S_j = \Sigma_j^{-1}$ being invertible as $\Sigma_j$ is PD, we can do:
+
+    $$\sum_{i=1}^{n} w_j^{(i)} (x^{(i)} - \mu_j) + \sum_{i=1}^{\tilde{n}} \tilde{w}_j^{(i)} (\tilde{x}^{(i)} - \mu_j) = 0$$
+
+    $$\sum_{i=1}^{n} w_j^{(i)} x^{(i)} - \sum_{i=1}^{n} w_j^{(i)} \mu_j + \sum_{i=1}^{\tilde{n}} \tilde{w}_j^{(i)} \tilde{x}^{(i)} - \sum_{i=1}^{\tilde{n}} \tilde{w}_j^{(i)} \mu_j = 0$$
+
+    $$\sum_{i=1}^{n} w_j^{(i)} x^{(i)} + \sum_{i=1}^{\tilde{n}} \tilde{w}_j^{(i)} \tilde{x}^{(i)} = \left( \sum_{i=1}^{n} w_j^{(i)} + \sum_{i=1}^{\tilde{n}} \tilde{w}_j^{(i)} \right) \mu_j$$
+
+    Solving for $\mu_j^{(t+1)}$:
+
+    $$\mu_j^{(t+1)} = \frac{\sum_{i=1}^{n} w_j^{(i)} x^{(i)} + \sum_{i=1}^{\tilde{n}} \tilde{w}_j^{(i)} \tilde{x}^{(i)}}{\sum_{i=1}^{n} w_j^{(i)} + \sum_{i=1}^{\tilde{n}} \tilde{w}_j^{(i)}}$$
+
+    \textbf{2b) Update rule for $\phi_j^{(t+1)}$}
+
+    To find the update rule for $\phi_j^{(t+1)}$, we have an analogous situation as above, only that we have the constraints that $\sum_{j=1}^{k} \phi_j = 1$ and $\phi_j \ge 0$. For this we need to use Lagrange multipliers.
+
+    Starting similar as in a), we can now again focus on only the terms involving $\phi_j$:
+
+    $$\sum_{i=1}^{n} \sum_{j=1}^{k} w_j^{(i)} \log(\phi_j) + \sum_{i=1}^{\tilde{n}} \sum_{j=1}^{k} \tilde{w}_j^{(i)} \log(\phi_j) = \sum_{j=1}^{k} \left( \sum_{i=1}^{n} w_j^{(i)} + \sum_{i=1}^{\tilde{n}} \tilde{w}_j^{(i)} \right) \log(\phi_j)$$
+
+    Simplifying this further by letting $N_j^{\text{eff}} = \sum_{i=1}^{n} w_j^{(i)} + \sum_{i=1}^{\tilde{n}} \tilde{w}_j^{(i)}$ be the effective number of points assigned to cluster $j$:
+
+    $$\sum_{j=1}^{k} N_j^{\text{eff}} \log(\phi_j)$$
+
+    We need to now maximize this subject to $\sum_{j=1}^{k} \phi_j = 1$. The Lagrangian to do this with is:
+
+    $$\mathcal{L}(\phi, \lambda) = \sum_{j=1}^{k} N_j^{\text{eff}} \log(\phi_j) - \lambda \left( \sum_{j=1}^{k} \phi_j - 1 \right)$$
+
+    We differentiate with respect to $\phi_j$ and set the function to zero to find the critical point:
+
+    $$\frac{\partial \mathcal{L}}{\partial \phi_j} = \frac{N_j^{\text{eff}}}{\phi_j} - \lambda = 0$$
+
+    $$\phi_j = \frac{N_j^{\text{eff}}}{\lambda}$$
+
+    Substituting this back into the constraint, we get:
+
+    $$\frac{1}{\lambda} \sum_{j=1}^{k} N_j^{\text{eff}} = 1$$
+
+    $$\lambda = \sum_{j=1}^{k} N_j^{\text{eff}}$$
+
+    And with this lambda, we can put this back into the expression for $\phi_j$:
+
+    $$\phi_j^{(t+1)} = \frac{N_j^{\text{eff}}}{\sum_{l=1}^{k} N_l^{\text{eff}}} = \frac{\sum_{i=1}^{n} w_j^{(i)} + \sum_{i=1}^{\tilde{n}} \tilde{w}_j^{(i)}}{\sum_{l=1}^{k} \left( \sum_{i=1}^{n} w_l^{(i)} + \sum_{i=1}^{\tilde{n}} \tilde{w}_l^{(i)} \right)}$$
+
+    The denominator is the total number of points, as: $n + \sum_{i=1}^{\tilde{n}} \sum_{l=1}^{k} \tilde{w}_l^{(i)} = n + \tilde{n}$, as the weights equal 1 for each data point across all different clusters.
+
+    Hence, the update rule is:
+
+    $$\phi_j^{(t+1)} = \frac{\sum_{i=1}^{n} w_j^{(i)} + \sum_{i=1}^{\tilde{n}} \tilde{w}_j^{(i)}}{n + \tilde{n}}$$
+\end{answer}

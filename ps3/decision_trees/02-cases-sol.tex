@@ -1,0 +1,18 @@
+\begin{answer}
+
+    If the split is not meaningful ($p_1 = p_2 = p_p$), we get:
+\[ G(p_p) = t \cdot G(p_p) + (1-t) G(p_p) = (t+1-t) \cdot G(p_p) = G(p_p) \]
+This is one case where the Gini loss is the same.
+The other case is where during a split all data from the parent goes in one specific node, so that $t=1$ (or $t=0$)
+\[ G(p_p + 0 \cdot p_2) = G(p_1) + 0 \cdot G(p_2) (=) G(p_1) = G(p_p) \]
+
+These two cases only occur if the strong concavity doesn't hold true due to $p_p \neq p_1, t \in (0,1)$.
+
+\textbf{Why no influence?}
+\begin{enumerate}[label=\arabic*)]
+    \item A pure gini loss should be first of all technically possible as we have no degenerate cases, meaning all examples are separate.
+    \item Either case, with the child nodes having the same ratio of classes as the parent or just one child having all parent examples, both replicate the parent's nodes' Gini impurity and the learning algorithm will whenever possible find the best split even with optimal features and boundary.
+\end{enumerate}
+
+
+\end{answer}

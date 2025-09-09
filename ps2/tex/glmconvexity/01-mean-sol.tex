@@ -1,2 +1,29 @@
 \begin{answer}
+
+Given:
+
+1. $p(y|x; \theta) \sim \text{ExponentialFamily}(\eta)$ where $\eta \in \mathbb{R}$ is a scalar and $T(y)=y$ \\
+2. $p(y, \eta) = b(y) \exp(\eta y - a(\eta))$
+
+The integral of a PDF equals always 1:
+\[ \int p(y, \eta) dy = 1 \]
+Let's differentiate both sides by $\eta$:
+
+\begin{enumerate}
+\subsubsection*{}
+    \item $\frac{\partial}{\partial \eta} \int p(y, \eta) dy = \frac{\partial}{\partial \eta} 1 = 0$ \\
+    $\Rightarrow \int \frac{\partial}{\partial \eta} p(y, \eta) dy = 0$
+    
+    The derivative $\frac{\partial p(y, \eta)}{\partial \eta}$ is defined as:
+    \begin{align*}
+        \frac{\partial p(y, \eta)}{\partial \eta} &= \frac{\partial}{\partial \eta} (b(y) \exp(\eta y - a(\eta))) = (y - a'(\eta)) b(y) \exp(\eta y - a(\eta)) \\
+        &= (y - a'(\eta)) p(y, \eta)
+    \end{align*}
+    
+    Inserting into i)
+    \item $\int (y - a'(\eta)) p(y, \eta) dy = 0$ \\
+
+    $\underbrace{\int y \cdot p(y, \eta) dy}_{\text{by definition } E[y, \eta]} - a'(\eta) \underbrace{\int p(y, \eta) dy}_{\substack{\text{we know by definition} \\ \text{that this equals 1}}} = 0$ \\
+    $E[y, \eta] - a'(\eta) = 0 \Rightarrow E[y, \eta] = a'(\eta)$
+\end{enumerate}
 \end{answer}

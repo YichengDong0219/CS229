@@ -1,2 +1,39 @@
 \begin{answer}
+    \subsection*{c)}
+The NLL of the distribution is:
+\begin{align*}
+    l(\theta) &= -\log(p(y|x)) \\
+    &= -\log(b(y)\exp(\eta y - a(\eta))) \quad \text{where y and x are given and } \eta = \theta^T x\\
+    &= -\log b(y) - \eta y + a(\eta) \\
+\end{align*}
+
+\subsubsection*{Gradient $\nabla l(\theta)$:}
+
+Based on the chain rule $\frac{dl}{d\theta} = \frac{dl}{d\eta} \frac{d\eta}{d\theta}$
+\begin{align*}
+    \frac{\partial l}{\partial \eta} &= a'(\eta) - y \\
+    \frac{\partial \eta}{\partial \theta} &= x \\
+    \rightarrow \text{So } \frac{\partial l}{\partial \theta} &= (a'(\eta) - y) \cdot x
+\end{align*}
+
+\subsubsection*{Hessian $H = \nabla^2 l(\theta)$:}
+Based on the chain rule: $\frac{\partial^2 l}{\partial \theta^2} = \frac{\partial}{\partial \theta}(\underbrace{(a'(\eta)-y)}_{z}x) = \frac{\partial \nabla l(\theta)}{\partial z} \frac{\partial z}{\partial \eta} \frac{\partial \eta}{\partial \theta}$ \\
+\begin{align*}
+    \frac{\partial \nabla l(\theta)}{\partial z} &= x\\
+    \frac{\partial z}{\partial \eta} &= a''(\eta) \\
+    \frac{\partial \eta}{\partial \theta} &= x
+\end{align*}
+$\rightarrow$ So $\frac{\partial^2 l}{\partial \theta^2} = x(a''(\eta) \cdot x^T) = a''(\eta) \cdot x x^T 
+\rightarrow$ Outer Product scaled by $a''(\eta)$ \\
+
+
+\subsubsection*{Show that H is PSD via Quadratic Form:}
+$z^T H z \ge 0$ for all z, then H is PSD \\
+\[
+z^T H z \ge 0 = z^T(a''(\eta) x x^T)z = a''(\eta) z^T(x x^T)z = \underbrace{a''(\eta)}_{\substack{\text{As shown in b),} \\ \text{this is $Var(y|\eta)$,} \\ \text{which is always non-negative}}} \underbrace{(z^T x)(x^T z)}_{\text{square of } z^T x \\ \rightarrow \text{always } \ge 0}
+\]
+
+$\rightarrow$ $z^T H z \ge 0 \rightarrow$ The Hessian of the NLL is always PSD, and hence it must be convex.
+
+
 \end{answer}

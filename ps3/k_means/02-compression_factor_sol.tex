@@ -1,0 +1,10 @@
+\begin{answer}
+    
+    In the original image, we represent each pixel with 24 bits for every single pixel (on average, as technically if we reuse colors that should be a bit more efficient).
+
+
+    In the new, compressed image, we represent each pixel just with 4 bits \textit{(4 bits range numbers from 0 to 15, exactly the indices needed to refer to our set of 16 colors)} on average.
+
+
+    So our compression factor should be $1 - \frac{4}{24} = 1 - \frac{1}{6} = \frac{5}{6} \approx 0.833$ or approximately 83.3\% compression.
+\end{answer}

@@ -1,2 +1,21 @@
 \begin{answer}
+    
+The variance of a random variable is defined as:
+\[ \text{Var}(y) = E[(y - E[y])^2] = E[y^2] - E[y]^2 \]
+In our case:
+\[ \text{Var}(y, \eta) = E[y^2;\eta] - E[y;\eta]^2 \]
+
+From a), we know that $E[y; \eta] = \frac{\partial a(\eta)}{\partial \eta}$. Let's differentiate again by $\eta$:
+
+\begin{align*}
+\text{iii) } \frac{\partial}{\partial \eta} E[Y|\eta] &= \frac{\partial^2}{\partial \eta^2} a(\eta) \\
+\text{c=) } \frac{\partial}{\partial \eta} \int y \cdot p(y|\eta) dy &= \frac{\partial^2}{\partial \eta^2} a(\eta) \\
+&= \int y \cdot \frac{\partial}{\partial \eta} p(y|\eta) dy \quad (\text{insert from a)}) \\
+&= \int y \cdot (y - a'(\eta)) p(y|\eta) dy \\
+&= \underbrace{\int y^2 p(y|\eta) dy}_{E[Y^2|\eta]} - a'(\eta) \underbrace{\int y\, p(y|\eta) dy}_{E[Y|\eta]} \\
+&= E[Y^2;\eta] - a'(\eta) \cdot E[Y;\eta] \\
+&= E[Y^2;\eta] - (E[Y;\eta])^2 = \frac{\partial^2}{\partial \eta^2} a(\eta) \\
+\end{align*}
+
+$\rightarrow$ That's the definition of the Variance $\text{Var}(y, \eta)$. \\
 \end{answer}

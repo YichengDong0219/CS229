@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import numpy as np
 import util
 
@@ -14,7 +15,18 @@ def main(train_path, save_path):
     # *** START CODE HERE ***
     # Train a logistic regression classifier
     # Plot decision boundary on top of validation set.
+    clf = LogisticRegression()
+    clf.fit(x_train, y_train)
+    clf.predict(x_train)
     # Use save_path argument to save various visualizations for your own reference.
+    
+    plt.figure()
+    plt.scatter(x_train[:, 1], x_train[:, 2], c=["blue" if y == 0 else "red" for y in y_train])
+    
+    x_boundary = np.array([np.min(x_train[:, 1]), np.max(x_train[:, 1])])
+
+    plt.plot(x_boundary, clf.boundary(x_boundary), color='green')
+    plt.savefig(save_path)
     # *** END CODE HERE ***
 
 
@@ -27,7 +39,7 @@ class LogisticRegression:
         > clf.predict(x_eval)
     """
     def __init__(self, learning_rate=1, max_iter=100000, eps=1e-5,
-                 theta_0=None, verbose=True):
+                 theta_0=None, verbose=True, reg_rate=0.01):
         """
         Args:
             learning_rate: Step size for iterative solvers only.
@@ -43,7 +55,18 @@ class LogisticRegression:
         self.verbose = verbose
 
         # *** START CODE HERE ***
+        self.reg_rate = reg_rate
         # *** END CODE HERE ***
+        
+    
+    def boundary(self, x):
+        """
+        Outputs the y-values of the decision boundary (p(y|x) = 0.5) for the input x-values
+        """    
+        if self.theta is None:
+            self.theta = np.zeros(x.shape[1])
+
+        return (-self.theta[0] - self.theta[1] * x) / self.theta[2]
 
     def fit(self, x, y):
         """Run gradient descent to minimize J(theta) for logistic regression.
@@ -53,7 +76,39 @@ class LogisticRegression:
             y: Training example labels. Shape (n_examples,).
         """
         # *** START CODE HERE ***
+        for i in range(self.max_iter):
+            if self.theta is None:
+                self.theta = np.zeros(x.shape[1])
+            
+            old_theta = self.theta.copy()
+            
+            self.theta -= self.learning_rate * self.loss_gradient(x,y)
+        
+            
+            # if i % 500  == 0 or i < 1000 and i % 100 == 0:
+            #     print(f"ITERATION {i} ---- CURRENT LOSS: {self.loss(x,y)}")
+            #     print(f"PARAMETERS: {self.theta}")
+            #     print(f"CHANGE: {np.linalg.norm(self.theta - old_theta, ord=1)}")
+                
+            if np.linalg.norm(self.theta - old_theta, ord=1) < self.eps:
+                break
+        
+        print(f"FINAL THETA: {self.theta}")
         # *** END CODE HERE ***
+    
+    def loss(self, x,y):
+        if self.theta is None:
+            return np.zeros(x.shape[1])
+        
+        preds = self.predict(x)
+        return - np.sum(y * np.log(preds + 1e-5) + (1-y) * np.log(1 - preds+ 1e-5), axis=0) + 0.5 * self.reg_rate * np.linalg.norm(self.theta[1:]) ** 2
+    
+    def loss_gradient(self, x,y):
+        if self.theta is None:
+            return np.zeros(x.shape[1])
+        preds = self.predict(x)
+        grad = x.T @ (preds - y) + self.reg_rate * np.concatenate(([0], self.theta[1:]))
+        return grad
 
     def predict(self, x):
         """Return predicted probabilities given new inputs x.
@@ -65,13 +120,14 @@ class LogisticRegression:
             Outputs of shape (n_examples,).
         """
         # *** START CODE HERE ***
+        return (1 / (1 + np.exp(-x @ self.theta)))
         # *** END CODE HERE ***
 
 if __name__ == '__main__':
     print('==== Training model on data set A ====')
     main(train_path='ds1_a.csv',
-         save_path='logreg_pred_a.txt')
+         save_path='logreg_pred_a_no-reg.png')
 
     print('\n==== Training model on data set B ====')
     main(train_path='ds1_b.csv',
-         save_path='logreg_pred_b.txt')
+         save_path='logreg_pred_b_no-reg.png')

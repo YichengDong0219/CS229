@@ -1,2 +1,25 @@
 \begin{answer}
+    \begin{enumerate}
+\item $p(y; \lambda) = \frac{e^{-\lambda} \lambda^y}{y!} \rightarrow \text{PDF of Poisson Distribution}$
+
+
+To prove i) is part of the exponential family, we need to prove it follows this form:
+\[ p(y; \eta) = b(y) \exp(\eta^T T(y) - a(\eta)) \]
+
+With $\lambda^y = e^{\log(\lambda^y)} = e^{y \log(\lambda)}$, we can say:
+\begin{align*}
+    p(y; \lambda) &= \frac{1}{y!} \exp(y \log(\lambda) - \lambda) \\
+    &= \underbrace{\frac{1}{y!}}_{b(y)} \exp(\underbrace{y}_{T(y)} \underbrace{\log(\lambda)}_{\eta^T} - \underbrace{\lambda}_{a(\eta)})
+\end{align*}
+As $a(\eta) = \lambda$ is not a function of $\eta$, we can rewrite it as $a(\eta) = e^\eta$ \\ (with $\log(\lambda) = \eta \rightarrow \lambda=e^\eta$) \\
+
+
+So we have:
+\begin{align*}
+    b(y) &= \frac{1}{y!} \\
+    T(y) &= y \\
+    \eta &= \log(\lambda) \\
+    a(\eta) &= e^\eta
+\end{align*}
+\end{enumerate}
 \end{answer}

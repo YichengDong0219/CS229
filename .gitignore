@@ -56,7 +56,6 @@ venv/
 *.synctex
 *.dvi
 *.ps
-*.pdf
 *.thm
 *.upa
 *.upb
@@ -93,7 +92,6 @@ venv/
 **/*.synctex
 **/*.dvi
 **/*.ps
-**/*.pdf
 **/*.thm
 **/*.upa
 **/*.upb

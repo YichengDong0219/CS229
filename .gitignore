@@ -97,3 +97,6 @@ venv/
 **/*.thm
 **/*.upa
 **/*.upb
+
+# CS229 related
+**/submission.zip

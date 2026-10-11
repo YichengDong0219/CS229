@@ -10,14 +10,14 @@ where $y^{(i)} \in \{0, 1\}$, $h_\theta(x) = g(\theta^T x)$ and
 $g(z) = 1 / (1 + e^{-z})$.
 
 Implement logistic regression using gradient descent in
-\texttt{src/logreg\_stability/logreg.py}.
+\path{src/logreg_stability/logreg.py}.
 
 Starting with $\theta = \vec{0}$, run gradient descent until the updates to
 $\theta$ are small: Specifically, train until the first iteration $k$ such
 that $\|\theta_{k} - \theta_{k-1}\|_1 < \epsilon$, where
 $\epsilon = 1\times 10^{-5}$, or for a maximum of $10^5$ iterations. Then, perform logistic regression on dataset $A$ in \\
-\texttt{src/logreg\_stability/ds1\_a.csv}. You can run the code by simply executing
-\texttt{python logreg.py} in the \texttt{src/logreg\_stability} directory.
+\path{src/logreg_stability/ds1_a.csv}. You can run the code by simply executing
+\texttt{python logreg.py} in the \path{src/logreg_stability} directory.
 
 Include a plot of the training data with $x_1$ on the horizontal axis and $x_2$ on the vertical axis.
 To visualize the two classes, use a different symbol for examples $x^{(i)}$

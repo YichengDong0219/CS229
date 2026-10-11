@@ -1,0 +1,288 @@
+{
+  "datasets": [
+    {
+      "path": "ps1/src/implicitreg/ir1_train.csv",
+      "sha256": "9c58f5df82ea381ac6aac0a5214d4107ffc05c9bdf574c040c9ad1315dd84b8a",
+      "bytes": 159055
+    },
+    {
+      "path": "ps1/src/implicitreg/ir2_valid.csv",
+      "sha256": "66385a0b9d51fdb2284d0fc784f04e2ebe3c4214c0be08a4bcf0edb0c6911af7",
+      "bytes": 158731
+    },
+    {
+      "path": "ps1/src/implicitreg/ir2_train.csv",
+      "sha256": "62fe0c66f7af6316ccbd1aa3d1dbc4fd9bc5cde7ca5d168c789a36f5b4f305b2",
+      "bytes": 158700
+    },
+    {
+      "path": "ps1/src/implicitreg/ir1_valid.csv",
+      "sha256": "0aad67d7a0b34f8b608f53a007eec099a6d48c1c25d10000109ea6bf6a966672",
+      "bytes": 158912
+    },
+    {
+      "path": "ps1/src/doubledescent/train450.csv",
+      "sha256": "cd0faa5c11ff9f182c7720151f6462244bc8c6b9d3f44c3d99e3964864413258",
+      "bytes": 3445008
+    },
+    {
+      "path": "ps1/src/doubledescent/validation.csv",
+      "sha256": "519913b43f038c3600dcd9db1b35b967b69780947608279c803eb645834083e6",
+      "bytes": 15144997
+    },
+    {
+      "path": "ps1/src/doubledescent/train650.csv",
+      "sha256": "6f0f68cb6e525ee61a7ceda157eb4ea23b3ba6688ae15688cb08f33cc2b0c599",
+      "bytes": 4963802
+    },
+    {
+      "path": "ps1/src/doubledescent/train250.csv",
+      "sha256": "9faecdf2f3c2c04ebfdd56e417b5082e17f42eccb9acd6d5cbcfc24968f4f144",
+      "bytes": 1907773
+    },
+    {
+      "path": "ps1/src/doubledescent/train750.csv",
+      "sha256": "cca2b93cd494fb26cc56ea3bbfc56226fc92e2e67673005d7701a360ef7403a3",
+      "bytes": 5719086
+    },
+    {
+      "path": "ps1/src/doubledescent/train550.csv",
+      "sha256": "8efc7074dd30690ad24f22a1df50587ad9ae3fd2fc5ebd77adb889b0d694d88f",
+      "bytes": 4196217
+    },
+    {
+      "path": "ps1/src/doubledescent/train800.csv",
+      "sha256": "a4e816450961efd02f5fcfc3312a22c0b04e1d16102c69c8f7dd15d2f63097ff",
+      "bytes": 6085466
+    },
+    {
+      "path": "ps1/src/doubledescent/train350.csv",
+      "sha256": "b2095de5c198896d2ef5e48a23515e7770770ab835691d71493fea587c07c417",
+      "bytes": 2677391
+    },
+    {
+      "path": "ps1/src/doubledescent/train200.csv",
+      "sha256": "9f9742aa6ea1d178316875ccb3e34c9dd02f2a10d30481a7c147f2a09cf832ca",
+      "bytes": 1524995
+    },
+    {
+      "path": "ps1/src/doubledescent/train400.csv",
+      "sha256": "406c5f7f3ede13d58643b1e68ae280d93b1ca306c1dcdbb866d701faa815be19",
+      "bytes": 3056076
+    },
+    {
+      "path": "ps1/src/doubledescent/train600.csv",
+      "sha256": "8f9009020c05e2ab9b7e0ec1e815feb957f77dd8c2a4f1de9fd890551f5c7dcd",
+      "bytes": 4576933
+    },
+    {
+      "path": "ps1/src/doubledescent/train300.csv",
+      "sha256": "e0a33d2610660f4f612b656ed32b4e391eaacb907351b06a88f949d644053424",
+      "bytes": 2292593
+    },
+    {
+      "path": "ps1/src/doubledescent/train700.csv",
+      "sha256": "e4d15f22dc037a9e179a0418f5d5138c60ce8fd095ccb7d1b56533a6176ba236",
+      "bytes": 5336322
+    },
+    {
+      "path": "ps1/src/doubledescent/train500.csv",
+      "sha256": "ab1ff05fab3af311fcd7dd4fadd40e21cf043fe00b0059feabc68dde1e32e753",
+      "bytes": 3817528
+    },
+    {
+      "path": "ps1/src/featuremaps/valid.csv",
+      "sha256": "60018f2775dedeb9bdf56fe341d5c6a595ce8369b2c1b4b30d2b0ef4b74dde94",
+      "bytes": 587
+    },
+    {
+      "path": "ps1/src/featuremaps/small.csv",
+      "sha256": "5158b2c15ab8682f7bad9d7d693dc78aad72e439ab02d6cda60f9df455d8600d",
+      "bytes": 233
+    },
+    {
+      "path": "ps1/src/featuremaps/test.csv",
+      "sha256": "009f42fdeec397547c160c42ce90a510fafc45a956affb08f8bc66eee5db757d",
+      "bytes": 586
+    },
+    {
+      "path": "ps1/src/featuremaps/train.csv",
+      "sha256": "b5f5ad207f641ec32eaff28df4958cebcd0e84893ba5cd1488a10dd2c1adeaea",
+      "bytes": 2707
+    },
+    {
+      "path": "ps1/src/lwr/valid.csv",
+      "sha256": "d68e8b65877f4031bafb9011437923764938d0a09eac069e17f56f8746a2c558",
+      "bytes": 7760
+    },
+    {
+      "path": "ps1/src/lwr/test.csv",
+      "sha256": "cf1f8e6b19adb165b42b8afb85da5125c2bc8680410222012954b71811a8c1a7",
+      "bytes": 7808
+    },
+    {
+      "path": "ps1/src/lwr/train.csv",
+      "sha256": "174b62b924dde8225ec30e687ba0f30f1b913127a10a3329064ad650db73c74f",
+      "bytes": 11602
+    },
+    {
+      "path": "ps2/src/mnist/labels_train.csv.gz",
+      "sha256": "e52fd29ae7fe4806c2390bc62cb06c0cb5a3ac4566fcfb12122d3eb9cd6c8e98",
+      "bytes": 32783
+    },
+    {
+      "path": "ps2/src/mnist/labels_test.csv.gz",
+      "sha256": "3871775c37255466ce41eecd80e0568fbc68a8cff197a288157be6045f1f0e49",
+      "bytes": 5341
+    },
+    {
+      "path": "ps2/src/mnist/images_train.csv.gz",
+      "sha256": "c9f2772f3a6495f983b717a3cda32745ee413b5ea162b929517379ac2e7a73ab",
+      "bytes": 13242079
+    },
+    {
+      "path": "ps2/src/mnist/images_test.csv.gz",
+      "sha256": "f5d0910f4c0a084d91f50683bbc0fc2b9e5292e98face3d2ac11b0577dfb4344",
+      "bytes": 2103653
+    },
+    {
+      "path": "ps2/src/imbalanced/validation.csv",
+      "sha256": "1fe039fe2d89435ab7fe5e8af1e7b032351cc6b40858ce97bd070e8d70660a19",
+      "bytes": 46106
+    },
+    {
+      "path": "ps2/src/imbalanced/train.csv",
+      "sha256": "5807e90ff0bf9c8cd78509ab64845b981cf815369e3b930fa341008a93a5b5b7",
+      "bytes": 57712
+    },
+    {
+      "path": "ps2/src/simple_nn/train.csv",
+      "sha256": "8ee2ab2a8894d76ec4ec7dd05c3a45a832e9e439cf0c2cb6c191950d69b6646a",
+      "bytes": 17690
+    },
+    {
+      "path": "ps2/src/poisson/valid.csv",
+      "sha256": "f25fb3d93301927811ceb39ef4175b15e710595cfc20874853579d083fa76d31",
+      "bytes": 12122
+    },
+    {
+      "path": "ps2/src/poisson/test.csv",
+      "sha256": "14d06f167fe90961d9783b8461ed98703015a179b34dbada7e144fb1c51ecc94",
+      "bytes": 12148
+    },
+    {
+      "path": "ps2/src/poisson/train.csv",
+      "sha256": "04e361852a6eee8c76acb3882520c24ded3a6b87a31d962a6bb5f910b971ef67",
+      "bytes": 120908
+    },
+    {
+      "path": "ps2/src/logreg_stability/ds1_a.csv",
+      "sha256": "680101b133cae59320abd2a8e39568470be28f63bb1040629eb3e81dc18c41bf",
+      "bytes": 7508
+    },
+    {
+      "path": "ps2/src/logreg_stability/ds1_b.csv",
+      "sha256": "8f722899e389193b0e7fa5163b38e7b1f3261ebd61b174ebbaf0f9d03d9b0688",
+      "bytes": 7508
+    },
+    {
+      "path": "ps3/src/semi_supervised_em/valid.csv",
+      "sha256": "120c68be680312f4022ae1f7b362755e424b8fde6f6ba3e43f5478cf6721a68c",
+      "bytes": 42199
+    },
+    {
+      "path": "ps3/src/semi_supervised_em/test.csv",
+      "sha256": "87172fa61685bc16536e9fbc72397715c14e4d8430f94ecea072931f0c236280",
+      "bytes": 42170
+    },
+    {
+      "path": "ps3/src/semi_supervised_em/train.csv",
+      "sha256": "a45be99ded991ec73816a382f0b16cc0009d2d7a5bc566d92ca9077b6b488b2c",
+      "bytes": 42194
+    },
+    {
+      "path": "ps3/src/k_means/peppers-small.tiff",
+      "sha256": "1b9231be4afa5db9f52674a36049c4da0e4f21de81bb11302598255eb26af78d",
+      "bytes": 42488
+    },
+    {
+      "path": "ps3/src/k_means/peppers-large.tiff",
+      "sha256": "676c21edcc56b517ebd54764d6026d2befe7e15014ec3f0c9e6f2ce1d9ad74bf",
+      "bytes": 786572
+    }
+  ],
+  "answer_templates": [
+    "ps1/tex/implicitreg/03-linear-coding-sol.tex",
+    "ps1/tex/implicitreg/01-linear-overfitting-sol.tex",
+    "ps1/tex/implicitreg/02-linear-overfitting-sol.tex",
+    "ps1/tex/implicitreg/04-linear-gd-sol.tex",
+    "ps1/tex/implicitreg/05-qp-overfitting-sol.tex",
+    "ps1/tex/implicitreg/07-qp-batchsize-sol.tex",
+    "ps1/tex/implicitreg/06-qp-initialization-sol.tex",
+    "ps1/tex/doubledescent/03-reg-sol.tex",
+    "ps1/tex/doubledescent/01-solution-sol.tex",
+    "ps1/tex/doubledescent/02-unreg-sol.tex",
+    "ps1/tex/gd_convergence/03-lr-experiment-sol.tex",
+    "ps1/tex/gd_convergence/01-quadratic-sol.tex",
+    "ps1/tex/gd_convergence/02-multivar-sol.tex",
+    "ps1/tex/gd_convergence/04-general-sol.tex",
+    "ps1/tex/gd_convergence/05-lms-hessian-sol.tex",
+    "ps1/tex/featuremaps/04-other-features-sol.tex",
+    "ps1/tex/featuremaps/03-degree-k-code-sol.tex",
+    "ps1/tex/featuremaps/02-degree-3-code-sol.tex",
+    "ps1/tex/featuremaps/05-overfitting-sol.tex",
+    "ps1/tex/featuremaps/01-degree-3-math-sol.tex",
+    "ps1/tex/lwr/03-tau-sol.tex",
+    "ps1/tex/lwr/01-intro-sol.tex",
+    "ps1/tex/lwr/02-impl-sol.tex",
+    "ps2/tex/mnist/01-grad-sol.tex",
+    "ps2/tex/mnist/04-compare-sol.tex",
+    "ps2/tex/mnist/02-unregularized-sol.tex",
+    "ps2/tex/mnist/03-regularized-sol.tex",
+    "ps2/tex/imbalanced/02-vanilla-sol.tex",
+    "ps2/tex/imbalanced/01-evaluation-sol.tex",
+    "ps2/tex/imbalanced/03-proof-sol.tex",
+    "ps2/tex/imbalanced/04-coding-sol.tex",
+    "ps2/tex/simple_nn/02-step_function_sol.tex",
+    "ps2/tex/simple_nn/03-linear_sol.tex",
+    "ps2/tex/simple_nn/01-sigmoid_sol.tex",
+    "ps2/tex/glmconvexity/03-hessian-sol.tex",
+    "ps2/tex/glmconvexity/02-var-sol.tex",
+    "ps2/tex/glmconvexity/01-mean-sol.tex",
+    "ps2/tex/poisson/04-regression-sol.tex",
+    "ps2/tex/poisson/03-gd-update-sol.tex",
+    "ps2/tex/poisson/02-response-fn-sol.tex",
+    "ps2/tex/poisson/01-exponential-sol.tex",
+    "ps2/tex/logreg_stability/02-a-vs-b-sol.tex",
+    "ps2/tex/logreg_stability/01-logreg-sol.tex",
+    "ps2/tex/logreg_stability/03-modifications-sol.tex",
+    "ps2/tex/logreg_stability/04-regularization-sol.tex",
+    "ps3/tex/pca/00-main-sol.tex",
+    "ps3/tex/semi_supervised_em/05-impl-semi-supervised-sol.tex",
+    "ps3/tex/semi_supervised_em/04-impl-unsupervised-sol.tex",
+    "ps3/tex/semi_supervised_em/03-m-step-sol.tex",
+    "ps3/tex/semi_supervised_em/02-e-step-sol.tex",
+    "ps3/tex/semi_supervised_em/06-comparison-sol.tex",
+    "ps3/tex/semi_supervised_em/01-convergence-sol.tex",
+    "ps3/tex/decision_trees/01-children-sol.tex",
+    "ps3/tex/decision_trees/02-cases-sol.tex",
+    "ps3/tex/decision_trees/03-misclas-sol.tex",
+    "ps3/tex/decision_trees/04-avg-var-sol.tex",
+    "ps3/tex/k_means/02-compression_factor_sol.tex",
+    "ps3/tex/k_means/01-k_means_impl_sol.tex"
+  ],
+  "question_assets": [
+    {
+      "path": "ps2/tex/mnist/mnist_plot.png",
+      "sha256": "b9ee0a059193b884043ddd8ebabb8e0d76116d3f427533b8d74cf08899b94ee2"
+    },
+    {
+      "path": "ps2/tex/simple_nn/nn_plot.pdf",
+      "sha256": "b87f5b4ee87768b2ccb1518e573a60e51c882d96d0b81652f3954c55e67136eb"
+    },
+    {
+      "path": "ps2/tex/simple_nn/nn_architecture.pdf",
+      "sha256": "2d0f4f94130355534c4c918593154bdbfb2acb127d73db6ac1e0b5a538e80788"
+    }
+  ]
+}

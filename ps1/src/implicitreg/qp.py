@@ -26,26 +26,9 @@ class QP:
             X_val: validation/validation input
             Y_val: validation/validation output
         """
-        if verbose:
-            log_steps = []
-            log_vals = []
-            log_trains = []
-
-        for t in range(max_step):
-            # *** START CODE HERE ***
-            # Compute the gradient of self.theta, self.phi using data X, Y
-            # and update self.theta, self.phi
-            grad_theta, grad_phi = self.gradient(X, Y)
-            self.theta = self.theta - eta * grad_theta
-            self.phi = self.phi - eta * grad_phi
-            # *** END CODE HERE ***
-            if verbose:
-                log_steps.append(t)
-                log_vals.append(self.validation(X_val, Y_val))
-                log_trains.append(self.validation(X, Y))
-                
-        if verbose:
-            return (log_steps, log_trains, log_vals)
+        # *** START CODE HERE ***
+        raise NotImplementedError("TODO: implement train_GD")
+        # *** END CODE HERE ***
             
     def train_SGD(self, X, Y, eta = 8e-2, max_step = 1000, batch_size = 1, 
                   verbose = False, X_val = None, Y_val = None):
@@ -61,33 +44,9 @@ class QP:
             X_val: validation/validation input
             Y_val: validation/validation output
         """
-        if verbose:
-            log_steps = []
-            log_vals = []
-            log_trains = []
-
-        np.random.seed(0)
-        n = X.shape[0]
-        idx = np.arange(n)
-
-        for t in range(max_step):
-            idx_batch = np.random.choice(idx, size = batch_size, replace = False)
-            X_batch = X[idx_batch]
-            Y_batch = Y[idx_batch]
-
-            # *** START CODE HERE ***
-            # Compute the gradient of self.theta, self.phi using data X_batch, Y_batch
-            grad_theta, grad_phi = self.gradient(X_batch, Y_batch)
-            self.theta = self.theta - eta * grad_theta
-            self.phi = self.phi - eta * grad_phi
-            # and update self.theta, self.phi
-            # *** END CODE HERE ***
-            if verbose:
-                log_steps.append(t)
-                log_vals.append(self.validation(X_val, Y_val))
-                log_trains.append(self.validation(X, Y))
-        if verbose:
-            return (log_steps, log_trains, log_vals)
+        # *** START CODE HERE ***
+        raise NotImplementedError("TODO: implement train_SGD")
+        # *** END CODE HERE ***
     
     def predict(self, X):
         return X.dot(self.theta ** 2 - self.phi ** 2)
@@ -95,13 +54,9 @@ class QP:
     def gradient(self, X, Y):
         """Return the gradient w.r.t. theta and phi
         """
-        # Print the gradient calculation components
         # *** START CODE HERE ***
-        params = (self.theta ** 2) - self.phi ** 2
-        return (
-            np.mean((X @ params - Y)[:, None] * (X.T * self.theta[:, None]).T, axis=0),
-            -np.mean((X @ params - Y)[:, None] * (X.T * self.phi[:, None]).T, axis=0)
-        )
+        raise NotImplementedError("TODO: implement gradient")
+        # *** END CODE HERE ***
         # *** END CODE HERE ***
     
     def validation(self, X, Y):

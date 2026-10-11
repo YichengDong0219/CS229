@@ -1,100 +1,28 @@
-# General
-.DS_Store
-Thumbs.db
-*.log
-*.tmp
-*.swp
-*.bak
-*.out
-
-# Python
+# Python and notebooks
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-.env
-.venv
-env/
-venv/
-*.egg-info/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
 
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# VSCode
+# Editors and macOS
+.DS_Store
 .vscode/
+.idea/
 
-# LaTeX
+# Local environments
+.venv/
+.env
+
+# LaTeX intermediate files
 *.aux
-*.bbl
-*.blg
-*.brf
-*.fls
-*.fdb_latexmk
-*.glo
-*.gls
-*.idx
-*.ilg
-*.ind
-*.lof
 *.log
-*.lot
 *.out
 *.toc
-*.acn
-*.acr
-*.alg
-*.glg
-*.glsdefs
-*.ist
+*.fls
+*.fdb_latexmk
 *.synctex.gz
-*.nav
-*.snm
-*.vrb
 *.xdv
-*.pdfsync
-*.synctex
-*.dvi
-*.ps
-*.thm
-*.upa
-*.upb
 
-# LaTeX - subfolders
-**/*.aux
-**/*.bbl
-**/*.blg
-**/*.brf
-**/*.fls
-**/*.fdb_latexmk
-**/*.glo
-**/*.gls
-**/*.idx
-**/*.ilg
-**/*.ind
-**/*.lof
-**/*.log
-**/*.lot
-**/*.out
-**/*.toc
-**/*.acn
-**/*.acr
-**/*.alg
-**/*.glg
-**/*.glsdefs
-**/*.ist
-**/*.synctex.gz
-**/*.nav
-**/*.snm
-**/*.vrb
-**/*.xdv
-**/*.pdfsync
-**/*.synctex
-**/*.dvi
-**/*.ps
-**/*.thm
-**/*.upa
-**/*.upb
-
-# CS229 related
-**/submission.zip
+# Generated model caches and archives
+*_params.npy
+submission.zip

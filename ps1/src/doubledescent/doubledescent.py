@@ -19,16 +19,9 @@ def regression(train_path, validation_path):
     Return:
         val_err: Validation error
     """
-    x_train, y_train = util.load_dataset(train_path)
-    x_validation, y_validation = util.load_dataset(validation_path)
-
-    val_err = 0
     # *** START CODE HERE ***
-    beta_hat = np.linalg.pinv(x_train.T @ x_train) @ x_train.T @ y_train
-    
-    val_err = (1 / (x_validation.shape[0])) * np.sum((x_validation @ beta_hat - y_validation) ** 2)
-    # *** END CODE HERE
-    return val_err
+    raise NotImplementedError("TODO: implement regression")
+    # *** END CODE HERE ***
 
 def ridge_regression(train_path, validation_path):
     """Part (c): Double descent for regularized linear regression.
@@ -42,16 +35,9 @@ def ridge_regression(train_path, validation_path):
     Return:
         val_err: List of validation errors for different scaling factors of lambda in reg_list.
     """
-    x_train, y_train = util.load_dataset(train_path)
-    x_validation, y_validation = util.load_dataset(validation_path)
-    
-    val_err = []
-    for reg in reg_list:     
-        # *** START CODE HERE ***
-        beta_hat = np.linalg.inv(x_train.T @ x_train + np.diag(reg * np.ones(x_train.shape[1]))) @ x_train.T @ y_train
-        
-        val_err.append((1 / (x_validation.shape[0])) * np.sum((x_validation @ beta_hat - y_validation) ** 2))
-    return val_err
+    # *** START CODE HERE ***
+    raise NotImplementedError("TODO: implement ridge_regression")
+    # *** END CODE HERE ***
 
 if __name__ == '__main__':
     val_err = []

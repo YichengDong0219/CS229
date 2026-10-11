@@ -22,9 +22,8 @@ def softmax(x):
         A 2d numpy float array containing the softmax results of shape batch_size x number_of_classes
     """
     # *** START CODE HERE ***
-    x_stable = x - np.max(x, axis=1, keepdims=True)
-    exp_x = np.exp(x_stable)
-    return exp_x / np.sum(exp_x, axis=1, keepdims=True)
+    raise NotImplementedError("TODO: implement softmax")
+    # *** END CODE HERE ***
     # *** END CODE HERE ***
 
 def sigmoid(x):
@@ -38,7 +37,8 @@ def sigmoid(x):
         A numpy float array containing the sigmoid results
     """
     # *** START CODE HERE ***
-    return 1 / (1 + np.exp(-x))
+    raise NotImplementedError("TODO: implement sigmoid")
+    # *** END CODE HERE ***
     # *** END CODE HERE ***
 
 def get_initial_params(input_size, num_hidden, num_output):
@@ -66,14 +66,9 @@ def get_initial_params(input_size, num_hidden, num_output):
     Returns:
         A dict mapping parameter names to numpy arrays
     """
-
     # *** START CODE HERE ***
-    return {
-        "W1": np.random.randn(input_size, num_hidden),
-        "b1": np.zeros(num_hidden),
-        "W2": np.random.randn(num_hidden, num_output),
-        "b2": np.zeros(num_output),
-    }
+    raise NotImplementedError("TODO: implement get_initial_params")
+    # *** END CODE HERE ***
     # *** END CODE HERE ***
 
 def forward_prop(data, one_hot_labels, params):
@@ -95,16 +90,8 @@ def forward_prop(data, one_hot_labels, params):
             3. The average loss for these data elements
     """
     # *** START CODE HERE ***
-    # For stability
-    epsilon = 1e-12
-    hlayer_output = sigmoid(data @ params["W1"] + params["b1"])
-    hypothesis_output = softmax(hlayer_output @ params["W2"] + params["b2"])
-    
-    return (
-        hlayer_output,
-        hypothesis_output,
-        -np.mean(np.sum(one_hot_labels * np.log(hypothesis_output + epsilon), axis=1))
-    )
+    raise NotImplementedError("TODO: implement forward_prop")
+    # *** END CODE HERE ***
     # *** END CODE HERE ***
 
 def backward_prop(data, one_hot_labels, params, forward_prop_func):
@@ -128,27 +115,8 @@ def backward_prop(data, one_hot_labels, params, forward_prop_func):
             W1, W2, b1, and b2
     """
     # *** START CODE HERE ***
-    batch_size = data.shape[0]
-    hidden_activations, output_activations, loss = forward_prop_func(data, one_hot_labels, params)
-    
-    grad_logits = output_activations - one_hot_labels
-    
-    grad_w2 = hidden_activations.T @ grad_logits / batch_size
-    
-    grad_b2 = np.mean(grad_logits, axis=0)
-    
-    grad_hidden = (grad_logits @ params["W2"].T) * (hidden_activations * (1 - hidden_activations))
-
-    grad_W1 = data.T @ grad_hidden / batch_size 
-    grad_b1 = np.mean(grad_hidden, axis=0)
-
-    
-    return {
-        "W2": grad_w2,
-        "b2": grad_b2,
-        "W1": grad_W1,
-        "b1": grad_b1
-    }
+    raise NotImplementedError("TODO: implement backward_prop")
+    # *** END CODE HERE ***
     # *** END CODE HERE ***
 
 
@@ -174,12 +142,8 @@ def backward_prop_regularized(data, one_hot_labels, params, forward_prop_func, r
             W1, W2, b1, and b2
     """
     # *** START CODE HERE ***
-    grads = backward_prop(data, one_hot_labels, params, forward_prop_func)
-
-    grads["W1"] += 2 * reg * params["W1"]
-    grads["W2"] += 2 * reg * params["W2"]
-    
-    return grads
+    raise NotImplementedError("TODO: implement backward_prop_regularized")
+    # *** END CODE HERE ***
     # *** END CODE HERE ***
 
 def gradient_descent_epoch(train_data, one_hot_train_labels, learning_rate, batch_size, params, forward_prop_func, backward_prop_func):
@@ -200,26 +164,9 @@ def gradient_descent_epoch(train_data, one_hot_train_labels, learning_rate, batc
 
     Returns: This function returns nothing.
     """
-
     # *** START CODE HERE ***
-    n_examples = train_data.shape[0]
-    
-    max_iterations = int(np.ceil(n_examples / batch_size))
-    for i in range(max_iterations):
-        current_train_set = train_data[i * batch_size: (i + 1) * batch_size, :]
-        
-        current_label_set = one_hot_train_labels[i * batch_size: (i + 1) * batch_size, :]
-        
-        new_params = backward_prop_func(current_train_set, current_label_set, params, forward_prop_func)
-        
-        for key in params:
-            params[key] = params[key] - learning_rate * new_params[key]
-        
-    
-    return params
-
-    # This function does not return anything
-    return
+    raise NotImplementedError("TODO: implement gradient_descent_epoch")
+    # *** END CODE HERE ***
 
 def nn_train(
     train_data, train_labels, dev_data, dev_labels, 
@@ -268,31 +215,12 @@ def read_data(images_file, labels_file):
     return x, y
 
 def run_train_test(name, all_data, all_labels, backward_prop_func, num_epochs, plot=True):
-    param_file = f'./{name}_params.npy'
-    
-    if os.path.exists(param_file):
-        results = np.load(param_file, allow_pickle=True).item()
-        params = results['params']
-        cost_train = results['cost_train']
-        cost_dev = results['cost_dev']
-        accuracy_train = results['accuracy_train']
-        accuracy_dev = results['accuracy_dev']
-    else:
-        params, cost_train, cost_dev, accuracy_train, accuracy_dev = nn_train(
-            all_data['train'], all_labels['train'], 
-            all_data['dev'], all_labels['dev'],
-            get_initial_params, forward_prop, backward_prop_func,
-            num_hidden=300, learning_rate=5, num_epochs=num_epochs, batch_size=1000
-        )
-        
-        results = {
-            'params': params,
-            'cost_train': cost_train,
-            'cost_dev': cost_dev,
-            'accuracy_train': accuracy_train,
-            'accuracy_dev': accuracy_dev
-        }
-        np.save(param_file, results)
+    params, cost_train, cost_dev, accuracy_train, accuracy_dev = nn_train(
+        all_data['train'], all_labels['train'],
+        all_data['dev'], all_labels['dev'],
+        get_initial_params, forward_prop, backward_prop_func,
+        num_hidden=300, learning_rate=5, num_epochs=num_epochs, batch_size=1000
+    )
 
     t = np.arange(num_epochs)
 
@@ -329,7 +257,7 @@ def main(plot=True):
     args = parser.parse_args()
 
     np.random.seed(100)
-    train_data, train_labels = read_data('./images_train.csv', './labels_train.csv')
+    train_data, train_labels = read_data('./images_train.csv.gz', './labels_train.csv.gz')
     # convert labels to one-hot embeddings e_y.
     train_labels = one_hot_labels(train_labels)
     p = np.random.permutation(60000)
@@ -346,7 +274,7 @@ def main(plot=True):
     train_data = (train_data - mean) / std
     dev_data = (dev_data - mean) / std
 
-    test_data, test_labels = read_data('./images_test.csv', './labels_test.csv')
+    test_data, test_labels = read_data('./images_test.csv.gz', './labels_test.csv.gz')
     # convert labels to one-hot embeddings e_y.
     test_labels = one_hot_labels(test_labels)
     test_data = (test_data - mean) / std

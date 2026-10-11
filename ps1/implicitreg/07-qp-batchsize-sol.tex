@@ -1,9 +1,0 @@
-\begin{answer}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.6\textwidth]{src/implicitreg/implicitreg_quadratic_batchsize.png}
-        \caption{Validation loss with different batch sizes}
-    \end{figure}
-
-    SGD actually does find a better solution! For batchsize $n=40$, we are equivalent to the initialization experiment setting with $\alpha=0.1$, and the loss matches here. But the smaller our batches get, the better our validation loss performance. The noisier gradient updates seem to help us find even better minima, or at least solutions that generalize better.
-\end{answer}

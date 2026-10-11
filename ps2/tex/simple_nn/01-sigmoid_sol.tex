@@ -1,17 +1,3 @@
 \begin{answer}
-    
-    The GD update to \(w_{1,2}^{[1]}\) should be the gradient of the loss w.r.t to \(w_{1,2}^{[1]}\):
-\[ \frac{\partial L}{\partial w_{1,2}^{[1]}} = \quad \frac{\partial L}{\partial o} \frac{\partial o}{\partial z_o} \frac{\partial z_o}{\partial h_2} \frac{\partial h_2}{\partial z_2} \frac{\partial z_2}{\partial w_{1,2}} \]
-
-\begin{align*}
-    \frac{\partial l}{\partial o} &= 2(o - y) \\
-    \frac{\partial o}{\partial z_o} &= \sigma'(z_o) = o(1-o) \\
-    \frac{\partial z_o}{\partial h_2} &= w^{}_{2} \\
-    \frac{\partial h_2}{\partial z_2} &= \sigma'(z_2) = h_2(1-h_2) \\
-    \frac{\partial z_2}{\partial w^{[1]}_{1,2}} &= x_1 \\
-\end{align*}
-
-\(\rightarrow\) The full GD update rule with learning Rate \(\alpha\) would be:
-\[ W^{[1]}_{1,2} := w^{[1]}_{1,2} - \alpha \left[ \frac{1}{n} \sum_{i=1}^n 2(o^{(i)}-y^{(i)}) \cdot o^{(i)}(1-o^{(i)}) \cdot w^{}_{2} \cdot h_2^{(i)}(1-h_2^{(i)}) \cdot x_1^{(i)} \right] \]
-
+% TODO: Write your own solution here.
 \end{answer}

@@ -29,8 +29,8 @@ class LinearModel(object):
             y: Training example labels. Shape (n_examples,).
         """
         # *** START CODE HERE ***
-        mapped_input = self.create_sin(self.k, X) if self.sine else self.create_poly(self.k, X)
-        self.theta = np.linalg.solve(mapped_input.T @ mapped_input, mapped_input.T @ y)
+        raise NotImplementedError("TODO: implement fit")
+        # *** END CODE HERE ***
         # *** END CODE HERE ***
 
     def create_poly(self, k, X):
@@ -43,7 +43,8 @@ class LinearModel(object):
             X: Training example inputs. Shape (n_examples, 2).
         """
         # *** START CODE HERE ***
-        return np.hstack([X[:,1][:, np.newaxis] ** i for i in range((k or 0)+1)])
+        raise NotImplementedError("TODO: implement create_poly")
+        # *** END CODE HERE ***
         # *** END CODE HERE ***
 
     def create_sin(self, k, X):
@@ -55,7 +56,8 @@ class LinearModel(object):
             X: Training example inputs. Shape (n_examples, 2).
         """
         # *** START CODE HERE ***
-        return np.hstack([self.create_poly(k, X), np.sin(X)[:, 1][:, np.newaxis]])
+        raise NotImplementedError("TODO: implement create_sin")
+        # *** END CODE HERE ***
         # *** END CODE HERE ***
 
     def predict(self, X):
@@ -70,39 +72,15 @@ class LinearModel(object):
             Outputs of shape (n_examples,).
         """
         # *** START CODE HERE ***
-        mapped_input = self.create_sin(self.k, X) if self.sine else self.create_poly(self.k, X)
-        return mapped_input @ self.theta
+        raise NotImplementedError("TODO: implement predict")
+        # *** END CODE HERE ***
         # *** END CODE HERE ***
 
 
 def run_exp(train_path, sine=False, ks=[1, 2, 3, 5, 10, 20], filename='plot.png', print_theta=False):
-    train_x,train_y=util.load_dataset(train_path,add_intercept=True)
-    plot_x = np.ones([1000, 2])
-    plot_x[:, 1] = np.linspace(-factor*np.pi, factor*np.pi, 1000)
-    plt.figure()
-    plt.scatter(train_x[:, 1], train_y)
-
-    for k in ks:
-        '''
-        Our objective is to train models and perform predictions on plot_x data
-        '''
-        # *** START CODE HERE ***
-        model = LinearModel(k=k, sine=sine)
-        model.fit(train_x, train_y)
-        plot_y = model.predict(plot_x)
-        
-        if print_theta:
-            print(model.theta)
-        # *** END CODE HERE ***
-        '''
-        Here plot_y are the predictions of the linear model on the plot_x data
-        '''
-        plt.ylim(-2, 2)
-        plt.plot(plot_x[:, 1], plot_y, label='k=%d' % k, color=plt.cm.tab10(int(np.floor(int(np.random.random() * 11))))) # type: ignore
-
-    plt.legend()
-    plt.savefig(filename)
-    plt.clf()
+    # *** START CODE HERE ***
+    raise NotImplementedError("TODO: implement run_exp")
+    # *** END CODE HERE ***
 
 
 def main(train_path, small_path, eval_path):
@@ -110,17 +88,8 @@ def main(train_path, small_path, eval_path):
     Run all expetriments
     '''
     # *** START CODE HERE ***
-    # Experiment b)
-    run_exp(train_path=train_path, ks=[3], filename="plot-degree3.png")
-    
-    # Experiment c)
-    run_exp(train_path=train_path, ks=[3, 5, 10, 20], filename="plot-degrees[3, 5, 10, 20].png")
-    
-    # Experiment d)
-    run_exp(train_path=train_path,sine=True, ks=[0, 1, 2, 3, 5, 10, 20], filename="plot-sine-degrees[0, 1, 2, 3, 5, 10, 20].png")
-
-    # Experiment e)
-    run_exp(train_path=small_path, ks=[1, 2, 5, 10, 20], filename="plot-small-degrees[1, 2, 5, 10, 20].png")
+    raise NotImplementedError("TODO: implement main")
+    # *** END CODE HERE ***
 
     # *** END CODE HERE ***
 

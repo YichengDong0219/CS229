@@ -15,7 +15,7 @@ We will apply Poisson regression to model the number of visitors per day.
 Note that applying Poisson regression in particular assumes that the data
 follows a Poisson distribution whose natural parameter is a linear
 combination of the input features (\emph{i.e.,} $\eta = \theta^T x$).
-In \texttt{src/poisson/poisson.py}, implement Poisson regression for this dataset
+In \path{src/poisson/poisson.py}, implement Poisson regression for this dataset
 and use \emph{full batch gradient ascent} to maximize the log-likelihood of $\theta$. For the
 stopping criterion, check if the change in parameters has a norm smaller than
 a small value such as $10^{-5}$.

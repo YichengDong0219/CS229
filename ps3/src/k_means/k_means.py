@@ -24,21 +24,9 @@ def init_centroids(num_clusters, image):
     centroids_init : nparray
         Randomly initialized centroids
     """
-
-    # *** START YOUR CODE ***
-    H, W, C = image.shape
-    total_pixels = H * W
-    
-    pixel_indices = np.random.choice(total_pixels, size=num_clusters, replace=False)
-    
-    centroids_init = np.zeros((num_clusters, C))
-    for i, idx in enumerate(pixel_indices):
-        row = idx // W
-        col = idx % W
-        centroids_init[i] = image[row, col]
-    # *** END YOUR CODE ***
-
-    return centroids_init
+    # *** START CODE HERE ***
+    raise NotImplementedError("TODO: implement init_centroids")
+    # *** END CODE HERE ***
 
 
 def update_centroids(centroids, image, max_iter=30, print_every=10):
@@ -61,41 +49,9 @@ def update_centroids(centroids, image, max_iter=30, print_every=10):
     new_centroids : nparray
         Updated centroids
     """
-
-    # Restructure image to work easier with it
-    h, w, c = image.shape
-    
-    assignments = np.random.randint(0, centroids.shape[0], (h,w,1))
-    new_centroids = centroids.copy()
-    # *** START YOUR CODE ***
-    for i in range(0, max_iter):
-        assignments_old = assignments.copy()
-        if i % print_every == 0:
-            print(f"Iteration {i}/{max_iter}: K-means clustering in progress...")
-            if i > 0:
-                centroid_change = np.mean(np.linalg.norm(new_centroids - centroids, axis=1))
-                print(f"  Average centroid movement: {centroid_change:.4f}")
-        
-        # Update cluster assignments
-        assignments = calculate_closest_centroids(new_centroids, image)[:,:,np.newaxis]
-        
-        # Update cluster means
-        for j in range(0, new_centroids.shape[0]):
-            # Find all pixels assigned to this centroid
-            mask = (assignments[:, :, 0] == j)
-            
-            if np.any(mask):
-                # Get pixel values for this cluster
-                cluster_pixels = image[mask]
-                # Calculate mean color for this centroid
-                new_centroids[j] = np.mean(cluster_pixels, axis=0)
-        
-        # Converge and break out if assignments are the same:
-        if np.array_equal(assignments, assignments_old):
-            break
-    # *** END YOUR CODE ***
-
-    return new_centroids
+    # *** START CODE HERE ***
+    raise NotImplementedError("TODO: implement update_centroids")
+    # *** END CODE HERE ***
 
 
 def update_image(image, centroids):
@@ -115,26 +71,14 @@ def update_image(image, centroids):
     image : nparray
         Updated image
     """
-
-    # *** START YOUR CODE ***
-    closest_clusters = calculate_closest_centroids(centroids=centroids, image=image)
-    
-    # Reconstruct image
-    new_image = centroids[closest_clusters]
-
-    return new_image.astype(np.uint8)
+    # *** START CODE HERE ***
+    raise NotImplementedError("TODO: implement update_image")
+    # *** END CODE HERE ***
 
 def calculate_closest_centroids(centroids, image):
-        # Flatten the first two dimensions of image to get (H*W, C) array
-    h, w, c = image.shape
-    flattened_image = image.reshape(h * w, c)
-    
-    # Calculate for each pixel the distance from all centroids in a (h * w, num_centroids, 1) array
-    differences = np.linalg.norm(centroids[np.newaxis, :] - flattened_image[:, np.newaxis, :]
-, axis=2)
-    
-    # Closest assignments per pixel
-    return np.argmin(differences, axis=1).reshape(h, w)
+    # *** START CODE HERE ***
+    raise NotImplementedError("TODO: implement calculate_closest_centroids")
+    # *** END CODE HERE ***
     
 def main(args):
 

@@ -1,19 +1,3 @@
 \begin{answer}
-
-        Gradient $\frac{\partial l_{CE}(t, y)}{\partial t}$: \\
-
-        \[ l_{CE}(t, y) = -\log(\exp(t_y)) + \log(\sum_k \exp(t_k)) = -t_{y} + \log(\sum_k \exp(t_k)) \]
-        The partial derivative of the second term w.R.t. a single logit $f_j$ is:
-        \[ \frac{\partial}{\partial t_j} \log(\sum_k \exp(t_k)) =  \frac{1}{\sum_k \exp(t_k)} \cdot \exp(t_j) = \frac{\exp(t_j)}{\sum_k \exp(t_k)} \]
-        
-        The expression for the derivative is same as the definition of $p_j$, the softmax of the jth output of t - the logits! So we have:
-        \[ \frac{\partial}{\partial t} (\log(\sum_k \exp(t_k))) = p \]
-        The first expression of the loss gradient, $t_y$, is depending on the specific component $t_j$ we are derivating with respect to. For $j=y$, the derivative would be -1, else zero. \\
-
-        For the derivative of the the loss first loss term w.r.t the complete vector $t$, we get:
-\[ \frac{\partial}{\partial t} (-t_y) = [0, \dots, 1, \dots, 0]^T \quad \text{with 1 at position y} \]
-This is the one-hot on vector \(e_y\). Putting both term derivatives together,
-\[ \frac{\partial L_{CE}(t,y)}{\partial t} = p - e_y \]
+% TODO: Write your own solution here.
 \end{answer}
-   
-  

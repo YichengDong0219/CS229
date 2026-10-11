@@ -17,6 +17,7 @@
 \usepackage{amsmath,amssymb,epsf}
 \usepackage{verbatim}
 \usepackage{url}
+\usepackage{xurl}
 \usepackage[hang,flushmargin]{footmisc} 
 \usepackage{hyperref}
 \newcommand{\hurl}[1]{\href{#1}{#1}}
@@ -87,7 +88,7 @@ emphstyle={\color{self}\slshape},
 \newcommand{\nodify}[1]{{\sc #1}}
 \newcommand{\points}[1]{{\textbf{[#1 points]}}}
 \newcommand{\subquestionpoints}[1]{{[#1 points]}}
-\newenvironment{answer}{{\bf Answer:} \sf \begingroup\color{red}}{\endgroup}%
+\newenvironment{answer}{\par\medskip{\bf Answer:} \sf \begingroup\color{red}}{\endgroup\par\medskip}%
 
 \newcommand{\bitem}{\begin{list}{$\bullet$}%
 {\setlength{\itemsep}{0pt}\setlength{\topsep}{0pt}%
